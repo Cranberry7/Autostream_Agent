@@ -92,14 +92,14 @@ You: That sounds great, I want to try the Pro plan for my YouTube channel
 Agent: [Detects high_intent, transitions to lead qualification]
        "Could you please share your name?"
 
-You: My name is Alex Johnson
+You: My name is Bob
 Agent: "Thanks! What's the best email address to reach you at?"
 
-You: alex@gmail.com
+You: bob@gmail.com
 Agent: "Great! Which platform(s) do you primarily create content on?"
 
 You: YouTube
-Agent: [TOOL fires] "🎉 You're all set, Alex Johnson! ..."
+Agent: [TOOL fires] "You're all set, Bob! ..."
 
 [State] lead_captured=True
 Lead successfully captured.
