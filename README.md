@@ -2,7 +2,7 @@
 
 > **Assignment:** ServiceHive × Inflx — Social-to-Lead Agentic Workflow  
 > **Company:** AutoStream — AI-powered video editing SaaS for content creators  
-> **Stack:** Python 3.9+ · LangChain · LangGraph · FAISS · GPT-4o-mini
+> **Stack:** Python 3.9+ · LangChain · LangGraph · FAISS · gemini-2.5-flash
 
 ---
 
@@ -47,7 +47,7 @@ autostream-agent/
 ### Prerequisites
 
 - Python 3.9 or higher
-- An [OpenAI API key](https://platform.openai.com/api-keys)
+- A [Google API key]
 
 ### Step-by-Step Setup
 
@@ -111,11 +111,11 @@ Lead successfully captured.
 
 ### Why LangGraph?
 
-LangGraph was chosen over AutoGen because this workflow is **deterministic and sequential** — it follows a predictable state machine rather than a free-form multi-agent conversation. LangGraph's `StateGraph` provides first-class typed state (`AgentState`) that flows through every node, making state transitions explicit, auditable, and safe. Its conditional edge API lets us implement precise routing (e.g., "only call the CRM tool when all fields are populated") without hiding control flow inside the LLM itself.
+LangGraph was chosen over AutoGen because this workflow is **deterministic and sequential** i.e it follows a predictable state machine rather than a free-form multi-agent conversation. LangGraph's `StateGraph` provides first-class typed state (`AgentState`) that flows through every node, making state transitions explicit, auditable, and safe. Its conditional edge API lets us implement precise routing (e.g., "only call the CRM tool when all fields are populated") without hiding control flow inside the LLM itself.
 
 ### State Management
 
-`AgentState` is a `TypedDict` with six fields: `messages`, `intent`, `name`, `email`, `platform`, and `lead_captured`. The `messages` field uses LangGraph's `add_messages` reducer, which **appends** new messages instead of overwriting — preserving the full conversation history across all turns. Every node receives the full state and returns only the fields it modifies; LangGraph merges these partial updates automatically.
+`AgentState` is a `TypedDict` with six fields: `messages`, `intent`, `name`, `email`, `platform`, and `lead_captured`. The `messages` field uses LangGraph's `add_messages` reducer, which **appends** new messages instead of overwriting, preserving the full conversation history across all turns. Every node receives the full state and returns only the fields it modifies, LangGraph merges these partial updates automatically.
 
 ### RAG vs. Intent Detection — Strict Separation
 
@@ -200,10 +200,6 @@ This enables stateful multi-turn conversations that survive across server restar
 
 ## Environment Variables
 
-| Variable | Required | Description |
-|---|---|---|
-| `OPENAI_API_KEY` | ✅ | Your OpenAI API key |
+`Gemini API Key`
 
 ---
-
-*Built by ServiceHive × Inflx — AutoStream Social-to-Lead Agentic Workflow*
